@@ -1,0 +1,17 @@
+config.json
+
+.idea
+.vscode
+.vscode-test
+.vscodeignore
+.vscode-test-cached-config
+.vscode-test-cached-config.json
+.vscode-test-config.json
+.vscode-test-config.json.backup
+.vscode-test-config.json.backup.1
+
+__pycache__/
+__pycache__
+*.pyc
+*.pyo
+.coverage
