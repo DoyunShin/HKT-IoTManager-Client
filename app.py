@@ -223,6 +223,7 @@ app.debug = True
 @app.route('/')
 def main():
     rtn = request.args
+    print(rtn)
     if rtn["action"] in ["led", "lcd"]:
         if rtn["action"] == "led":
             pass
