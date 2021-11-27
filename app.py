@@ -150,7 +150,7 @@ class hwmanager(Exception):
         pass
     
     def i2c_load(self):
-        if self.storage.data.lcd == True:
+        if self.storage.data.boil == True:
             import I2C
             self.lcdmanager = I2C.lcd()
         else:
@@ -177,11 +177,11 @@ class hwmanager(Exception):
         return 0
 
     def led_on(self, value: bool):
-        if self.storage.data.lcd == True: self.lcdmanager.lcd_display_string("MainRoom LED ON", 1)
+        if self.storage.data.boil == True: self.lcdmanager.lcd_display_string("MainRoom LED ON", 1)
         self.GPIO.output(self.led_channel, self.GPIO.HIGH)
         
     def led_off(self, value: bool):
-        if self.storage.data.lcd == True: self.lcdmanager.lcd_display_string("MainRoom LED OFF", 1)
+        if self.storage.data.boil == True: self.lcdmanager.lcd_display_string("MainRoom LED OFF", 1)
         self.GPIO.output(self.led_channel, self.GPIO.LOW)
 
     def lcd_on_thread(self):
