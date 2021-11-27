@@ -155,14 +155,14 @@ class hwmanager(Exception):
     def manage(self, action: int):
         from threading import Thread
         if action == 0:
-            if self.storage.led == True:
+            if self.storage.data.led == True:
                 Thread(target=self.led_on, args=(False,)).start()
                 self.storage.data.actionupdate(2, False)
             else:
                 Thread(target=self.led_off, args=(True,)).start()
                 self.storage.data.actionupdate(2, True)
         elif action == 1:
-            if self.storage.boil == True:
+            if self.storage.data.boil == True:
                 Thread(target=self.boil_off, args=(False,)).start()
                 self.storage.data.actionupdate(3, False)
             else:
