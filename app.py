@@ -163,27 +163,27 @@ class hwmanager(Exception):
         from threading import Thread
         if action == 0:
             if self.storage.data.led == True:
-                Thread(target=self.led_off, args=(False,)).start()
+                Thread(target=self.led_off).start()
                 self.storage.data.actionupdate(2, False)
             else:
-                Thread(target=self.led_on, args=(True,)).start()
+                Thread(target=self.led_on).start()
                 self.storage.data.actionupdate(2, True)
         elif action == 1:
             if self.storage.data.boil == True:
-                Thread(target=self.lcd_off_thread, args=(False,)).start()
+                Thread(target=self.lcd_off_thread).start()
                 self.storage.data.actionupdate(3, False)
             else:
-                Thread(target=self.lcd_on_thread, args=(True,)).start()
+                Thread(target=self.lcd_on_thread).start()
                 self.storage.data.actionupdate(3, True)
         else:
             raise ValueError('Invalid action')
         return 0
 
-    def led_on(self, value: bool):
+    def led_on(self):
         if self.storage.data.boil == True: self.lcdmanager.lcd_display_string("MainRoom LED ON", 1)
         self.GPIO.output(self.led_channel, self.GPIO.HIGH)
         
-    def led_off(self, value: bool):
+    def led_off(self):
         if self.storage.data.boil == True: self.lcdmanager.lcd_display_string("MainRoom LED OFF", 1)
         self.GPIO.output(self.led_channel, self.GPIO.LOW)
 
