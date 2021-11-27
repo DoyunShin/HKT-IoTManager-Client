@@ -234,9 +234,7 @@ def main():
                 storage.data.actionupdate(1, False)
         print("ACTION OK")
     
-    storage.html.mainpageheader()
-
-    return "1"
+    return storage.html.mainpageheader()
 
 @app.route('/worktest')
 def pagetest():
