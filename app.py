@@ -232,8 +232,6 @@ def main():
                 storage.data.actionupdate(1, True)
             else:
                 storage.data.actionupdate(1, False)
-        print("ACTION OK")
-    
     return storage.html.mainpageheader()
 
 @app.route('/worktest')
@@ -248,7 +246,7 @@ def test():
 @app.route('/icon/<iconfile>')
 def icon(iconfile):
     try:
-        return send_file('static/img/{icofile}'.format(icofile=iconfile))
+        return send_file('icon/{icofile}'.format(icofile=iconfile))
     except:
         raise ValueError('Invalid icon file')
 
