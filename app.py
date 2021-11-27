@@ -9,7 +9,6 @@ class Dummy(Exception):
 class Storage(Exception):
     def __init__(self):
         from htmadmin import HTMLFILES
-        from threading import Thread
         self.conf = Dummy()
         self.config()
         self.conf.scoreserver = "192.168.50.17"
@@ -146,6 +145,9 @@ class hwmanager(Exception):
 
         GPIO.output(self.led_channel, GPIO.LOW)
         GPIO.output(self.lcd_channel, GPIO.LOW)
+
+        self.storage.data.led = False
+        self.storage.data.boil = False 
 
         pass
     
