@@ -102,6 +102,7 @@ class datahandler(Exception):
     def actionupdate(self, action: int, value: bool):
         from time import time
         if action in [0,1,2,3]:
+            print("Action: " + str(action) + " " + str(value))
             self.data.append([action, value, time()])
             self.datastore()
             if action == 2:
