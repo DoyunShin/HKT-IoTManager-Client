@@ -243,7 +243,7 @@ def test():
     return "OK"
 
 # Return Icons for each action
-@app.route('/icon/<iconfile>')
+@app.route('/icons/<iconfile>')
 def icon(iconfile):
     try:
         return send_file('icon/{icofile}'.format(icofile=iconfile))
