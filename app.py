@@ -235,6 +235,7 @@ def main():
             storage.hw.manage(0)
         elif rtn["action"] == "lcd":
             storage.hw.manage(1)
+    print(storage.data.led, storage.data.boil)
     return storage.html.mainpageheader()
 
 @app.route('/worktest')
