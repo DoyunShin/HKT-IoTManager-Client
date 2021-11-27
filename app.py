@@ -234,7 +234,7 @@ def main():
     if 'action' in rtn and rtn["action"] in ["led", "lcd"]:
         if rtn["action"] == "led":
             storage.hw.manage(0)
-        elif rtn["action"] == "lcd":
+        elif rtn["action"] == "boil":
             storage.hw.manage(1)
     print(storage.data.led, storage.data.boil)
     return storage.html.mainpageheader()
