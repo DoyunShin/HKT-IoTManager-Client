@@ -224,7 +224,7 @@ app.debug = True
 def main():
     rtn = request.args
     print(rtn)
-    if rtn["action"] in ["led", "lcd"]:
+    if 'action' in rtn and rtn["action"] in ["led", "lcd"]:
         if rtn["action"] == "led":
             pass
         elif rtn["action"] == "lcd":
@@ -233,8 +233,6 @@ def main():
             else:
                 storage.data.actionupdate(1, False)
         print("ACTION OK")
-    else:
-        pass
     
     storage.html.mainpageheader()
 
