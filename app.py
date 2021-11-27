@@ -123,6 +123,7 @@ class datahandler(Exception):
             r = get("http://" + self.storage.conf.scoreserver + "/action", json={"userid": self.storage.conf.userid, "action": action, "status": int(value)})
         except:
             print("Server is not online")
+            return -1
         if r.status_code == 200:
             return 0
         else:
