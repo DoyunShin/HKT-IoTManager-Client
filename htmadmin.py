@@ -3,13 +3,14 @@ class HTMLFILES(Exception):
         self.storage = storage
         pass
 
-    def mainpageheader(self, led, boil):
-        if led == True:
+    def mainpageheader(self):
+
+        if self.storage.data.led == True:
             led = '''<img src="/icons/led_on.png" alt="LED ON" onclick="location.href='/?action=led'">'''
         else:
             led = '''<img src="/icons/led_off.png" alt="LED OFF" onclick="location.href='/?action=led'">'''
         
-        if boil == True:
+        if self.storage.data.boil == True:
             boil = '''<img src="/icons/boil_on.png" alt="BOIL ON" onclick="location.href='/?action=boil'">'''
         else:
             boil = '''<img src="/icons/boil_off.png" alt="BOIL OFF" onclick="location.href='/?action=boil'">'''
@@ -32,7 +33,7 @@ class HTMLFILES(Exception):
         {boil}
     </div>
     <div class="container">
-        <h1>Score</h1>
+        <h1>ScoreBoard</h1>
         <iframe src="http://{serverip}/scoreboard" width="100%" height="500px"></iframe>
     </div>
 </body>
