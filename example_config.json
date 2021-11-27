@@ -1,4 +1,5 @@
 {
     "userid": "",
-    "host": ""
+    "host": "",
+    "checker": "ping"
 }
