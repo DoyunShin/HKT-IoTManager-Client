@@ -231,7 +231,7 @@ app.debug = True
 def main():
     rtn = request.args
     print(rtn)
-    if 'action' in rtn and rtn["action"] in ["led", "lcd"]:
+    if 'action' in rtn and rtn["action"] in ["led", "boil"]:
         if rtn["action"] == "led":
             storage.hw.manage(0)
         elif rtn["action"] == "boil":
