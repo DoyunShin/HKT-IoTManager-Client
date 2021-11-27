@@ -180,12 +180,28 @@ class hwmanager(Exception):
         return 0
 
     def led_on(self):
-        if self.storage.data.boil == True: self.lcdmanager.lcd_display_string("MainRoom LED ON", 1)
+        from time import sleep
         self.GPIO.output(self.led_channel, self.GPIO.HIGH)
+        if self.storage.data.boil == True: 
+            self.lcdmanager.lcd_clear()
+            self.lcdmanager.lcd_display_string("MainRoom LED ON", 1)
+            self.lcdmanager.lcd_display_string("Now: 6*C", 2)
+            sleep(2)
+            self.lcdmanager.lcd_clear()
+            self.lcdmanager.lcd_display_string("2021-11-27", 1)
+            self.lcdmanager.lcd_display_string("Now: 6*C", 2)
         
     def led_off(self):
-        if self.storage.data.boil == True: self.lcdmanager.lcd_display_string("MainRoom LED OFF", 1)
+        from time import sleep
         self.GPIO.output(self.led_channel, self.GPIO.LOW)
+        if self.storage.data.boil == True: 
+            self.lcdmanager.lcd_clear()
+            self.lcdmanager.lcd_display_string("MainRoom LED OFF", 1)
+            self.lcdmanager.lcd_display_string("Now: 6*C", 2)
+            sleep(2)
+            self.lcdmanager.lcd_clear()
+            self.lcdmanager.lcd_display_string("2021-11-27", 1)
+            self.lcdmanager.lcd_display_string("Now: 6*C", 2)
 
     def lcd_on_thread(self):
         from time import sleep
@@ -193,25 +209,37 @@ class hwmanager(Exception):
         sleep(0.5)
         self.i2c_load()
         sleep(1)
+        self.lcdmanager.lcd_clear()
         self.lcdmanager.lcd_display_string("Hi!", 1)
         self.lcdmanager.lcd_display_string("BOILER V1.0", 2)
         sleep(2)
+        self.lcdmanager.lcd_clear()
         self.lcdmanager.lcd_display_string("Loading", 1)
         self.lcdmanager.lcd_display_string("Please Wait...", 2)
         sleep(2)
+        self.lcdmanager.lcd_clear()
         self.lcdmanager.lcd_display_string("Set Temp to 22*C", 1)
         self.lcdmanager.lcd_display_string("Now: 6*C", 2)
         sleep(1)
+        self.lcdmanager.lcd_clear()
         self.lcdmanager.lcd_display_string("22*C AUTO", 1)
+        self.lcdmanager.lcd_display_string("Now: 6*C", 2)
         sleep(1)
+        self.lcdmanager.lcd_clear()
         self.lcdmanager.lcd_display_string("Set Temp to 22*C", 1)
+        self.lcdmanager.lcd_display_string("Now: 6*C", 2)
         sleep(1)
+        self.lcdmanager.lcd_clear()
         self.lcdmanager.lcd_display_string("22*C AUTO", 1)
+        self.lcdmanager.lcd_display_string("Now: 6*C", 2)
         sleep(1)
+        self.lcdmanager.lcd_clear()
         self.lcdmanager.lcd_display_string("2021-11-27", 1)
+        self.lcdmanager.lcd_display_string("Now: 6*C", 2)
     
     def lcd_off_thread(self):
         from time import sleep
+        self.lcdmanager.lcd_clear()
         self.lcdmanager.lcd_display_string("Boil Off", 1)
         self.lcdmanager.lcd_display_string("Bye", 2)
 
