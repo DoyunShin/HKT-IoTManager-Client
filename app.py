@@ -188,9 +188,10 @@ class hwmanager(Exception):
         self.GPIO.output(self.led_channel, self.GPIO.LOW)
 
     def lcd_on_thread(self):
-        self.i2c_load()
         from time import sleep
         self.GPIO.output(self.lcd_channel, self.GPIO.HIGH)
+        sleep(0.5)
+        self.i2c_load()
         sleep(1)
         self.lcdmanager.lcd_display_string("Hi!", 1)
         self.lcdmanager.lcd_display_string("BOILER V1.0", 2)
