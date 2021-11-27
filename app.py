@@ -11,7 +11,7 @@ class Storage(Exception):
         from htmadmin import HTMLFILES
         self.conf = Dummy()
         self.config()
-        self.conf.scoreserver = "192.168.50.17"
+        self.conf.scoreserver = "10.141.9.88"
 
         self.data = datahandler(self)
         self.html = HTMLFILES(self)
