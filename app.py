@@ -170,10 +170,10 @@ class hwmanager(Exception):
                 self.storage.data.actionupdate(2, True)
         elif action == 1:
             if self.storage.data.boil == True:
-                Thread(target=self.lcd_on_thread, args=(False,)).start()
+                Thread(target=self.lcd_off_thread, args=(False,)).start()
                 self.storage.data.actionupdate(3, False)
             else:
-                Thread(target=self.lcd_off_thread, args=(True,)).start()
+                Thread(target=self.lcd_on_thread, args=(True,)).start()
                 self.storage.data.actionupdate(3, True)
         else:
             raise ValueError('Invalid action')
