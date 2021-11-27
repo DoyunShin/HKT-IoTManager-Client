@@ -110,7 +110,7 @@ class datahandler(Exception):
             elif action == 3:
                 self.boil = value
             self.sendtoserver(action, value)
-            
+
             return 0
         else:
             raise ValueError('Invalid action')
@@ -130,8 +130,7 @@ class hwmanager(Exception):
         self.storage = storage
 
         import RPi.GPIO as GPIO
-        import I2C
-        self.lcdmanager = I2C.lcd()
+
         self.GPIO = GPIO
         self.led_channel = 17
         self.lcd_channel = 27
@@ -146,6 +145,13 @@ class hwmanager(Exception):
 
         pass
     
+    def i2c_load(self):
+        if self.storage.data.lcd == True:
+            import I2C
+            self.lcdmanager = I2C.lcd()
+        else:
+            raise ValueError('LCD is not connected')
+
     def manage(self, action: int):
         from threading import Thread
         if action == 0:
@@ -175,6 +181,7 @@ class hwmanager(Exception):
         self.GPIO.output(self.led_channel, self.GPIO.LOW)
 
     def lcd_on_thread(self):
+        self.i2c_load()
         from time import sleep
         self.GPIO.output(self.lcd_channel, self.GPIO.HIGH)
         sleep(1)
@@ -202,6 +209,7 @@ class hwmanager(Exception):
 
         sleep(1)
         self.lcdmanager.lcd_clear()
+        del(self.lcdmanager)
         self.GPIO.output(self.lcd_channel, self.GPIO.LOW)
 
         return 0
