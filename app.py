@@ -226,12 +226,9 @@ def main():
     print(rtn)
     if 'action' in rtn and rtn["action"] in ["led", "lcd"]:
         if rtn["action"] == "led":
-            pass
+            storage.hw.manage(0)
         elif rtn["action"] == "lcd":
-            if rtn["status"] == "1":
-                storage.data.actionupdate(1, True)
-            else:
-                storage.data.actionupdate(1, False)
+            storage.hw.manage(1)
     return storage.html.mainpageheader()
 
 @app.route('/worktest')
