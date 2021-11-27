@@ -118,8 +118,11 @@ class datahandler(Exception):
     def sendtoserver(self, action: int, value: bool):
         from json import dumps
         from requests import get
-
-        r = get("http://" + self.storage.conf.scoreserver + "/action", json={"userid": self.storage.conf.userid, "action": action, "status": int(value)})
+        
+        try:
+            r = get("http://" + self.storage.conf.scoreserver + "/action", json={"userid": self.storage.conf.userid, "action": action, "status": int(value)})
+        except:
+            print("Server is not online")
         if r.status_code == 200:
             return 0
         else:
