@@ -163,17 +163,17 @@ class hwmanager(Exception):
         from threading import Thread
         if action == 0:
             if self.storage.data.led == True:
-                Thread(target=self.led_on, args=(False,)).start()
+                Thread(target=self.led_off, args=(False,)).start()
                 self.storage.data.actionupdate(2, False)
             else:
-                Thread(target=self.led_off, args=(True,)).start()
+                Thread(target=self.led_on, args=(True,)).start()
                 self.storage.data.actionupdate(2, True)
         elif action == 1:
             if self.storage.data.boil == True:
-                Thread(target=self.boil_off, args=(False,)).start()
+                Thread(target=self.lcd_on_thread, args=(False,)).start()
                 self.storage.data.actionupdate(3, False)
             else:
-                Thread(target=self.boil_on, args=(True,)).start()
+                Thread(target=self.lcd_off_thread, args=(True,)).start()
                 self.storage.data.actionupdate(3, True)
         else:
             raise ValueError('Invalid action')
