@@ -38,4 +38,4 @@ class HTMLFILES(Exception):
     </div>
 </body>
 </html>
-        '''.format(led=led, boil=boil, serverip=self.storage.conf.host)
+        '''.format(led=led, boil=boil, serverip=self.storage.conf.scoreserver)
