@@ -119,7 +119,7 @@ class datahandler(Exception):
         from json import dumps
         from requests import get
 
-        r = get(self.storage.conf.scoreserver + "/action", json={"userid": self.storage.conf.userid, "action": action, "status": int(value)})
+        r = get("http://" + self.storage.conf.scoreserver + "/action", json={"userid": self.storage.conf.userid, "action": action, "status": int(value)})
         if r.status_code == 200:
             return 0
         else:
